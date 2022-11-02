@@ -14,21 +14,32 @@
 
           <nav>
             <ul>
-              <li>Opcion</li>
-              <li>Opcion</li>
+              <li></li>
+
               <li>
-                <svg class="files" width="32" height="32" id="copy-to-clipboard" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="files" width="44" height="44" id="copy-to-clipboard" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M15 3v4a1 1 0 0 0 1 1h4" />
                   <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
                   <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
                 </svg>
               </li>
+
+              <li>
+                <svg class="share" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="6" r="3" />
+                  <circle cx="18" cy="18" r="3" />
+                  <line x1="8.7" y1="10.7" x2="15.3" y2="7.3" />
+                  <line x1="8.7" y1="13.3" x2="15.3" y2="16.7" />
+                </svg>
+              </li>
             </ul>
           </nav>
 
           <footer>
-            <svg class="settings" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
               <circle cx="12" cy="12" r="3" />
@@ -37,16 +48,22 @@
         </aside>
 
         <section class="ide-container">
-          <textarea id="html">
+          <section id="html"></section>
+          <section id="css"></section>
+          <section id="js"></section>
 
-          </textarea>
-          <textarea id="css">
-
-          </textarea>
-          <textarea id="js">
-
-          </textarea>
-          <iframe id="output"></iframe>
+          <div class="result-container">
+            <iframe id="output" srcdoc="<h1>Hifu!</h1>"></iframe>
+            <button class="fullscreen-btn">
+              <svg class="maximize" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+                <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+                <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+                <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+              </svg>
+            </button>
+          </div>
         </section>
       </main>
     </div>
