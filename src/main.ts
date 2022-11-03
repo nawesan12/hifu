@@ -1,7 +1,7 @@
 import './style.css'
 import { initialValues } from './constants'
 import setLoadingScreen from './loading'
-
+import { generateRandomLogoForMenu } from './utils'
 import { $html, $css, $js, $output, $logoimg, $copyButton, $fullscreenBtn } from './elements'
 
 import * as monaco from 'monaco-editor'
@@ -62,16 +62,7 @@ const updateOutput = () => {
   $output.srcdoc = generateOutput()
 }
 
-const generateRandomLogoForMenu = () => {
-  const random = new Date().getTime()
-  $logoimg.src = `https://avatars.dicebear.com/api/croodles/${random}.svg`  
-  
-  const randomToSixLengthHex = () => {
-    return Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
-  }
 
-  $logoimg.style.border = `4px solid #${randomToSixLengthHex()}`
-}
 
 const copyToClipboard = () => {
   navigator.clipboard.writeText($output.srcdoc)
@@ -88,11 +79,11 @@ cssEditor.onDidChangeModelContent(updateOutput)
 
 jsEditor.onDidChangeModelContent(updateOutput)
 
-$logoimg.addEventListener("click", generateRandomLogoForMenu)
+$logoimg.addEventListener("click", () => generateRandomLogoForMenu($logoimg))
 
 $copyButton.addEventListener("click", copyToClipboard)
 
 $fullscreenBtn.addEventListener("click", resultToFullScreen)
 
-generateRandomLogoForMenu()
-setLoadingScreen(1000)
+generateRandomLogoForMenu($logoimg)
+setLoadingScreen(2500)
