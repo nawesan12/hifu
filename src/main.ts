@@ -62,8 +62,6 @@ const updateOutput = () => {
   $output.srcdoc = generateOutput()
 }
 
-
-
 const copyToClipboard = () => {
   navigator.clipboard.writeText($output.srcdoc)
   alert("Copied to clipboard!")
@@ -85,5 +83,6 @@ $copyButton.addEventListener("click", copyToClipboard)
 
 $fullscreenBtn.addEventListener("click", resultToFullScreen)
 
+setLoadingScreen(2000)
 generateRandomLogoForMenu($logoimg)
-setLoadingScreen(2500)
+updateOutput()
