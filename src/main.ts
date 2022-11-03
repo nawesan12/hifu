@@ -1,4 +1,10 @@
 import './style.css'
+import { $ } from './utils'
+import { initialValues } from './constants'
+import setLoadingScreen from './loading'
+
+import { $html, $css, $js, $output, $logoimg, $copyButton, $fullscreenBtn } from './elements'
+
 import * as monaco from 'monaco-editor'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
@@ -13,42 +19,22 @@ window.MonacoEnvironment?({
   }
 }):null
 
-const $ = (e: string) => document.querySelector<HTMLElement>(e)
-
-const $html = $('#html') as HTMLElement
-const $css = $('#css') as HTMLElement
-const $js = $('#js') as HTMLElement
-const $output = $('#output') as HTMLIFrameElement
-
-const $logoimg = $('#img-logo') as HTMLImageElement
-const $copyButton = $('#copy-to-clipboard') as HTMLLIElement
-const $fullscreenBtn = $('.fullscreen-btn') as HTMLButtonElement
-
 const htmlEditor = monaco.editor.create($html, {
-  value: '<h1>Hifu!</h1>',
+  value: initialValues.html,
   language: 'html',
   theme: 'vs-dark',
   fontSize: 20
 })
 
 const cssEditor = monaco.editor.create($css, {
-  value: `* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-  
-body {
-  font-size: 20px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}`,
+  value: initialValues.css,
   language: 'css',
   theme: 'vs-dark',
   fontSize: 20
 })
 
 const jsEditor = monaco.editor.create($js, {
-  value: '',
+  value: initialValues.js,
   language: 'javascript',
   theme: 'vs-dark',
   fontSize: 20
@@ -110,3 +96,4 @@ $copyButton.addEventListener("click", copyToClipboard)
 $fullscreenBtn.addEventListener("click", resultToFullScreen)
 
 generateRandomLogoForMenu()
+setLoadingScreen(1000)
