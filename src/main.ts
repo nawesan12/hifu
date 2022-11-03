@@ -1,5 +1,4 @@
 import './style.css'
-import { $ } from './utils'
 import { initialValues } from './constants'
 import setLoadingScreen from './loading'
 
