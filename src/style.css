@@ -129,8 +129,8 @@ main {
 }
 
 .loading-screen img {
-  width: 10rem;
-  height: 10rem;
+  width: 12vw;
+  height: 12vw;
   transition: all 2.5s ease;
   animation: spin 1s linear infinite;
   margin-block: 5vh 0;
@@ -144,15 +144,91 @@ main {
 }
 
 .loading-screen .loading-container h2 {
-  font-size: 3vw;
+  font-size: 5vw;
   font-weight: 500;
   color: #fff;
 }
 
 .loading-screen .loading-container p {
-  font-size: 1.25vw;
+  font-size: 2vw;
   font-weight: 500;
   color: #fff;
+}
+
+.alert {
+  position: fixed;
+  left: 44%;
+  top: 2.5vh;
+  width: 25rem;
+  z-index: 999;
+  background: #292929;
+  border-radius: .5rem;
+  animation: showAlert 3s ease;
+}
+
+.alert .alert-content {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.alert .alert-content h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #f5f5f5;
+  padding-block: .75rem;
+}
+
+.alert .alert-content img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.alert .progress-bar {
+  height: .5rem;
+  width: 100%;
+  border-radius: 0 0 .5rem .5rem;
+}
+
+.alert .progress-bar .progress {
+  display: inline-block;
+  height: 100%;
+  width: 0%;
+  border-radius: 0 0 .5rem .5rem;
+}
+
+.success {
+  border-bottom: 2px solid #00ff00;
+}
+
+.error {
+  border-bottom: 2px solid #ff0000;
+}
+
+.warning {
+  border-bottom: 2px solid #ffbf00;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes showAlert {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-140%);
+  }
 }
 
 @keyframes spin {

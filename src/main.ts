@@ -3,6 +3,7 @@ import { initialValues } from './constants'
 import setLoadingScreen from './loading'
 import { generateRandomLogoForMenu } from './utils'
 import { $html, $css, $js, $output, $logoimg, $copyButton, $fullscreenBtn } from './elements'
+import { alertMessage } from './alerts'
 
 import * as monaco from 'monaco-editor'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
@@ -64,7 +65,7 @@ const updateOutput = () => {
 
 const copyToClipboard = () => {
   navigator.clipboard.writeText($output.srcdoc)
-  alert("Copied to clipboard!")
+  alertMessage('Copied to clipboard', 'success', 3000)
 }
 
 const resultToFullScreen = () => {
