@@ -1,4 +1,4 @@
-import { $ } from "./utils"
+import { $ } from "./elements"
 
 export const alertMessage = (text: string, type: string, lapse: number) => {
   const hifu = $("#hifu")

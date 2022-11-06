@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/thunder.webp" />
+    <link rel="icon" type="image/webp" href="/thunder.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hifu! - IDE</title>
   </head>
@@ -12,10 +12,9 @@
         <aside class="menu">
           <img src="/thunder.webp" alt="Hifu!" id="img-logo"/>
 
-          <nav>
-            <ul>
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-3d-cube-sphere" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <menu>
+              <button id="new-tab">
+                <svg width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M6 17.6l-2 -1.1v-2.5" />
                   <path d="M4 10v-2.5l2 -1.1" />
@@ -30,19 +29,19 @@
                   <path d="M12 12l-2 -1.12" />
                   <line x1="6" y1="8.6" x2="4" y2="7.5" />
                 </svg>
-              </li>
+              </button>
 
-              <li>
-                <svg class="files" width="44" height="44" id="copy-to-clipboard" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <button id="copy-to-clipboard">
+                <svg width="44" height="44"  viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M15 3v4a1 1 0 0 0 1 1h4" />
                   <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
                   <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
                 </svg>
-              </li>
+              </button>
 
-              <li>
-                <svg class="share" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <button id="share">
+                <svg width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <circle cx="6" cy="12" r="3" />
                   <circle cx="18" cy="6" r="3" />
@@ -50,12 +49,11 @@
                   <line x1="8.7" y1="10.7" x2="15.3" y2="7.3" />
                   <line x1="8.7" y1="13.3" x2="15.3" y2="16.7" />
                 </svg>
-              </li>
-            </ul>
-          </nav>
+              </button>
+          </menu>
 
           <footer>
-            <svg class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#888888" style="cursor:not-allowed" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
               <circle cx="12" cy="12" r="3" />

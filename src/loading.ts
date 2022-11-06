@@ -1,4 +1,4 @@
-import { $ } from "./utils"
+import { $ } from "./elements"
 
 export default (lapse: number) => {
   window.addEventListener("load", () => {
