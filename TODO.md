@@ -12,4 +12,4 @@
 
 8. Add sharing system for both cases
 
-9. Add copyright
+9. Add copyright [✔]
