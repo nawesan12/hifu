@@ -18,7 +18,7 @@ export const generateOutput = () => {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Hifu Result</title>
+        <title>Your Hifu result!</title>
         <link rel="icon" type="image/webp" href="/thunder.webp" />
         <style>
           ${cssEditor.getValue()}
@@ -51,6 +51,7 @@ export const newWindow = () => {
   const newWindow = window.open()
   newWindow?.document.write(generateOutput())
   newWindow?.document.close()
+  alertMessage('Project opened in a new tab!', 'success', 2500)
 }
 
 export const generateShareUrl = () => {
