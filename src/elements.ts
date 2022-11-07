@@ -10,4 +10,5 @@ export const $logoimg = $('#img-logo') as HTMLImageElement
 export const $copyButton = $('#copy-to-clipboard') as HTMLButtonElement
 export const $newTabButton = $('#new-tab') as HTMLButtonElement
 export const $shareButton = $('#share') as HTMLButtonElement
+export const $settingsButton = $('#settings') as HTMLButtonElement
 export const $fullscreenBtn = $('.fullscreen-btn') as HTMLButtonElement
