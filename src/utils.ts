@@ -1,3 +1,4 @@
+import { initialValues } from './constants';
 import { htmlEditor, cssEditor, jsEditor } from "./main"
 import { $output } from "./elements"
 import { alertMessage } from "./alerts"
@@ -67,4 +68,26 @@ export const shareToTwitter = () => {
   const text = 'Check out this cool Hifu result!'
   const twitterUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`
   window.open(twitterUrl, '_blank')
+}
+
+export const saveInLocalStorage = () => {
+  localStorage.setItem('html', htmlEditor.getValue())
+  localStorage.setItem('css', cssEditor.getValue())
+  localStorage.setItem('js', jsEditor.getValue())
+  alertMessage('Project saved in local storage!', 'success', 2500)
+}
+
+export const loadFromLocalStorage = () => {
+  const html = localStorage.getItem('html')
+  const css = localStorage.getItem('css')
+  const js = localStorage.getItem('js')
+
+  htmlEditor.setValue(html? html : initialValues.html)
+  cssEditor.setValue(css? css : initialValues.css)
+  jsEditor.setValue(js? js : initialValues.js)
+  updateOutput()
+  setTimeout(() => {
+    alertMessage('Project loaded from local storage!', 'success', 2500)
+  }, 2000)
+  return
 }

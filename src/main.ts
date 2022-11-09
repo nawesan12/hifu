@@ -1,9 +1,8 @@
 import './style.css'
-import { initialValues } from './constants'
 import setLoadingScreen from './loading'
-import { generateRandomLogoForMenu, newWindow, updateOutput, copyToClipboard, resultToFullScreen, shareToTwitter } from './utils'
+import { generateRandomLogoForMenu, newWindow, updateOutput, copyToClipboard, resultToFullScreen, loadFromLocalStorage, saveInLocalStorage } from './utils'
 import { alertMessage } from './alerts'
-import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton } from './elements'
+import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton, $saveButton } from './elements'
 
 import * as monaco from 'monaco-editor'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
@@ -20,21 +19,21 @@ window.MonacoEnvironment?({
 }):null
 
 export const htmlEditor = monaco.editor.create($html, {
-  value: initialValues.html,
+  value: "",
   language: 'html',
   theme: 'vs-dark',
   fontSize: 20
 })
 
 export const cssEditor = monaco.editor.create($css, {
-  value: initialValues.css,
+  value: "",
   language: 'css',
   theme: 'vs-dark',
   fontSize: 20
 })
 
 export const jsEditor = monaco.editor.create($js, {
-  value: initialValues.js,
+  value: "",
   language: 'javascript',
   theme: 'vs-dark',
   fontSize: 20
@@ -54,18 +53,15 @@ $copyButton.addEventListener("click", copyToClipboard)
 $newTabButton.addEventListener("click", () => newWindow())
 
 $shareButton.addEventListener("click", () => {
-  // const url = new URL(window.location.href)
-  // url.searchParams.set('html', htmlEditor.getValue())
-  // url.searchParams.set('css', cssEditor.getValue())
-  // url.searchParams.set('js', jsEditor.getValue())
-  // navigator.clipboard.writeText(url.toString())
-  // alertMessage('Copied to clipboard', 'success', 2500)
   alertMessage('We are working on this feature!', 'warning', 2500)
-  shareToTwitter()
 })
+
+$saveButton.addEventListener("click", saveInLocalStorage)
 
 $fullscreenBtn.addEventListener("click", resultToFullScreen)
 
-setLoadingScreen(2000)
+window.onunload = () => saveInLocalStorage()
+
+setLoadingScreen(2000)  
 generateRandomLogoForMenu($logoimg)
-updateOutput()
+loadFromLocalStorage()
