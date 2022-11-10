@@ -21,6 +21,7 @@ export const generateOutput = () => {
       <head>
         <title>Your Hifu result!</title>
         <link rel="icon" type="image/webp" href="/thunder.webp" />
+        /*ADD BOOTSTRAP AND BULMA HERE, FOR OPTIONAL USE*/
         <style>
           ${cssEditor.getValue()}
         </style>
