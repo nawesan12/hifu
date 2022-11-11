@@ -1,5 +1,3 @@
-import { $settingsButton } from "./elements"
+export const openSettings = () => {
 
-export const showSettingsNav = () => {
-  
 }

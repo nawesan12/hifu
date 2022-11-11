@@ -22,6 +22,9 @@ export const generateOutput = () => {
         <title>Your Hifu result!</title>
         <link rel="icon" type="image/webp" href="/thunder.webp" />
         /*ADD BOOTSTRAP AND BULMA HERE, FOR OPTIONAL USE*/
+        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/bulma/css/bulma.min.css">
+        <script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
         <style>
           ${cssEditor.getValue()}
         </style>

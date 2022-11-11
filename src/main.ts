@@ -2,12 +2,13 @@ import './style.css'
 import setLoadingScreen from './loading'
 import { generateRandomLogoForMenu, newWindow, updateOutput, copyToClipboard, resultToFullScreen, loadFromLocalStorage, saveInLocalStorage } from './utils'
 import { alertMessage } from './alerts'
-import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton, $saveButton } from './elements'
+import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton, $saveButton, $settingsButton } from './elements'
 
 import * as monaco from 'monaco-editor'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
+import { openSettings } from './settings'
 
 window.MonacoEnvironment?({
   getWorkerUrl: (_: any, label: string) => {
@@ -57,6 +58,8 @@ $shareButton.addEventListener("click", () => {
 })
 
 $saveButton.addEventListener("click", saveInLocalStorage)
+
+$settingsButton.addEventListener("click", openSettings)
 
 $fullscreenBtn.addEventListener("click", resultToFullScreen)
 
