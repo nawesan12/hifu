@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "minifycss": "npx postcss ./src/style/style.css > ./src/style/main.css"
   },
   "devDependencies": {
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"
   },

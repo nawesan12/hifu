@@ -79,6 +79,36 @@
               </svg>
             </button>
           </footer>
+
+          <section id="settings-menu" class="hidden">
+            <menu>
+              <div class="option">
+                <label for="theme">Theme</label>
+                <select id="theme">
+                  <option value="vs-dark">Dark</option>
+                  <option value="vs-light">Light</option>
+                </select>
+              </div>
+
+              <div class="option">
+                <label for="css-library">CSS Library</label>
+                <select id="css-library">
+                  <option value="">None</option>
+                  <option value="/bootstrap/css/bootstrap.min.css">Bootstrap 5</option>
+                  <option value="/bulma/css/bulma.min.css">Bulma 0.9.4</option>
+                </select>
+              </div>
+
+              <div class="option">
+                <label for="font-size">Font Size</label>
+                <select id="font-size">
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+            </menu>
+          </section>
         </aside>
 
         <section class="ide-container">

@@ -1,6 +1,6 @@
 import { initialValues } from './constants';
 import { htmlEditor, cssEditor, jsEditor } from "./main"
-import { $output } from "./elements"
+import { $output, $selectCSSLibrary } from "./elements"
 import { alertMessage } from "./alerts"
 
 export const generateRandomLogoForMenu = (e: HTMLImageElement) => {
@@ -15,28 +15,7 @@ export const generateRandomLogoForMenu = (e: HTMLImageElement) => {
 }
 
 export const generateOutput = () => {
-  return `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Your Hifu result!</title>
-        <link rel="icon" type="image/webp" href="/thunder.webp" />
-        /*ADD BOOTSTRAP AND BULMA HERE, FOR OPTIONAL USE*/
-        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/bulma/css/bulma.min.css">
-        <script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
-        <style>
-          ${cssEditor.getValue()}
-        </style>
-      </head>
-      <body>
-        ${htmlEditor.getValue()}
-        <script>
-          ${jsEditor.getValue()}
-        </script>
-      </body>
-    </html>
-  `
+  return `<!DOCTYPE html><html><head><title>Your Hifu result!</title><link rel="icon" type="image/webp" href="/thunder.webp" /><link rel="stylesheet" type="text/css" href="${$selectCSSLibrary.value ? localStorage.getItem('css-library') : " "}"><script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script><style>${cssEditor.getValue()}</style></head><body>${htmlEditor.getValue()}<script>${jsEditor.getValue()}</script></body></html>`
 }
 
 export const updateOutput = () => {
@@ -94,4 +73,19 @@ export const loadFromLocalStorage = () => {
     alertMessage('Project loaded from local storage!', 'success', 2500)
   }, 2000)
   return
+}
+
+export const readConfigFromLocalStorage = () => {
+  const cssLibrary = localStorage.getItem('css-library')
+  const theme = localStorage.getItem('theme')
+
+  if (cssLibrary) {
+    const $selectCSSLibrary = document.querySelector<HTMLSelectElement>('#css-library')
+    $selectCSSLibrary!.value = cssLibrary
+  }
+
+  if (theme) {
+    const $selectTheme = document.querySelector<HTMLSelectElement>('#theme')
+    $selectTheme!.value = theme
+  }
 }

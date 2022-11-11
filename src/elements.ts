@@ -13,3 +13,8 @@ export const $shareButton = $('#share') as HTMLButtonElement
 export const $saveButton = $('#save') as HTMLButtonElement
 export const $settingsButton = $('#settings') as HTMLButtonElement
 export const $fullscreenBtn = $('.fullscreen-btn') as HTMLButtonElement
+
+export const $settingsMenu = $('#settings-menu') as HTMLDivElement
+
+export const $selectTheme = $('#theme') as HTMLSelectElement
+export const $selectCSSLibrary = $('#css-library') as HTMLSelectElement
