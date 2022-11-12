@@ -4,37 +4,40 @@ import { generateRandomLogoForMenu, newWindow, updateOutput, copyToClipboard, re
 import { alertMessage } from './alerts'
 import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton, $saveButton, $settingsButton, $selectTheme, $selectCSSLibrary, $downloadButton } from './elements'
 
-import * as monaco from 'monaco-editor'
+import { editor } from 'monaco-editor'
+import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 import { changeTheme, loadConfigFromLocalStorage, openSettings, saveConfigInLocalStorage, toggleTheme } from './settings'
 import { downloadResultZippedFiles } from './download'
 
-window.MonacoEnvironment?({
-  getWorkerUrl: (_: any, label: string) => {
-    if (label === 'html') return new HtmlWorker()
-    if (label === 'css') return new CssWorker()
-    if (label === 'javascript') return new JsWorker()
-    return
+window.MonacoEnvironment = {
+  getWorker(_: any, label: string) {
+    switch (label) {
+      case 'html': return new HtmlWorker()
+      case 'javascript': return new JsWorker()
+      case 'css': return new CssWorker()
+      default: return new EditorWorker()
+    }
   }
-}):null
+}
 
-export const htmlEditor = monaco.editor.create($html, {
+export const htmlEditor = editor.create($html, {
   value: "",
   language: 'html',
   theme: 'vs-dark',
   fontSize: 20
 })
 
-export const cssEditor = monaco.editor.create($css, {
+export const cssEditor = editor.create($css, {
   value: "",
   language: 'css',
   theme: 'vs-dark',
   fontSize: 20
 })
 
-export const jsEditor = monaco.editor.create($js, {
+export const jsEditor = editor.create($js, {
   value: "",
   language: 'javascript',
   theme: 'vs-dark',

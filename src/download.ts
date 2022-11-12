@@ -1,11 +1,12 @@
 //@ts-nocheck comment at the top of the file
 
 import JSZip from 'jszip'
-import { htmlEditor, cssEditor, jsEditor } from "./main"
+import { cssEditor, jsEditor } from "./main"
+import { generateOutput } from './utils'
 
 export const downloadResultZippedFiles = () => {
   const zip = new JSZip()
-  zip.file("index.html", htmlEditor.getValue())
+  zip.file("index.html", generateOutput())
   zip.file("style.css", cssEditor.getValue())
   zip.file("script.js", jsEditor.getValue())
   zip.file("README.md", `

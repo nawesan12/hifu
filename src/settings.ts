@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor'
+import { editor } from 'monaco-editor'
 
 import { $selectCSSLibrary, $selectTheme, $settingsMenu } from "./elements"
 import { updateOutput } from './utils'
@@ -8,7 +8,7 @@ export const openSettings = () => {
 }
 
 export const changeTheme = (theme: string) => {
-  monaco.editor.setTheme(theme)
+  editor.setTheme(theme)
   saveConfigInLocalStorage()
 }
 

@@ -94,13 +94,17 @@ export const loadFromLocalStorage = () => {
   const css = localStorage.getItem('css')
   const js = localStorage.getItem('js')
 
-  htmlEditor.setValue(html? html : initialValues.html)
-  cssEditor.setValue(css? css : initialValues.css)
-  jsEditor.setValue(js? js : initialValues.js)
-  updateOutput()
-  setTimeout(() => {
-    alertMessage('Project loaded from local storage!', 'success', 2500)
-  }, 2000)
+  if(html || css || js) {
+    htmlEditor.setValue(html? html : initialValues.html)
+    cssEditor.setValue(css? css : initialValues.css)
+    jsEditor.setValue(js? js : initialValues.js)
+    updateOutput()
+    setTimeout(() => {
+      alertMessage('Project loaded from local storage!', 'success', 2500)
+    }, 2000)
+    return
+  }
+
   return
 }
 
@@ -117,32 +121,4 @@ export const readConfigFromLocalStorage = () => {
     const $selectTheme = document.querySelector<HTMLSelectElement>('#theme')
     $selectTheme!.value = theme
   }
-}
-
-export const downloadResultFiles = () => {
-  const html = new Blob([htmlEditor.getValue()], { type: 'text/html' })
-  const css = new Blob([cssEditor.getValue()], { type: 'text/css' })
-  const js = new Blob([jsEditor.getValue()], { type: 'text/javascript' })
-
-  const htmlURL = URL.createObjectURL(html)
-  const cssURL = URL.createObjectURL(css)
-  const jsURL = URL.createObjectURL(js)
-
-  const htmlLink = document.createElement('a')
-  const cssLink = document.createElement('a')
-  const jsLink = document.createElement('a')
-
-  htmlLink.href = htmlURL
-  cssLink.href = cssURL
-  jsLink.href = jsURL
-
-  htmlLink.download = 'index.html'
-  cssLink.download = 'style.css'
-  jsLink.download = 'script.js'
-
-  htmlLink.click()
-  cssLink.click()
-  jsLink.click()
-
-  alertMessage('Project downloaded!', 'success', 2500)
 }
