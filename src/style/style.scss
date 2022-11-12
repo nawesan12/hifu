@@ -189,6 +189,27 @@ main {
       justify-content: center;
     }
   }
+
+  section {
+    position:relative;
+  }
+
+  section img {
+    position:absolute;
+    bottom: 1.5vh;
+    right: 1.5vw;
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    z-index: 5;
+    opacity: .5;
+    cursor: pointer;
+    transition: .25s all ease;
+  } 
+
+  section img:hover {
+    opacity: 1;
+  }
 }
 
 .loading-screen {

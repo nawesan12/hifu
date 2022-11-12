@@ -57,7 +57,7 @@ $copyButton.addEventListener("click", copyToClipboard)
 
 $newTabButton.addEventListener("click", () => newWindow())
 
-$shareButton.addEventListener("click", () => alertMessage('We are working on this feature!', 'warning', 2500))
+$shareButton.addEventListener("click", () => alertMessage('We are working on this! Coda is coming', 'warning', 2500))
 
 $saveButton.addEventListener("click", saveInLocalStorage)
 

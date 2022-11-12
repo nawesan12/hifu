@@ -5,6 +5,7 @@
     <link rel="icon" type="image/webp" href="/thunder.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hifu! - IDE</title>
+    <meta name="description"  content="Hifu is an open source code editor developed by Nahuel Santillan. Made with Monaco Editor, Vanilla Typescript and SCSS" />
   </head>
   <body>
     <div id="hifu">
@@ -19,7 +20,7 @@
 
       <main>
         <aside class="menu">
-          <img src="/thunder.webp" alt="Hifu!" id="img-logo"/>
+          <img src="/thunder.webp" alt="Hifu!" id="img-logo" loading="lazy"/>
 
           <menu>
               <button id="new-tab">
@@ -122,9 +123,15 @@
         </aside>
 
         <section class="ide-container">
-          <section id="html"></section>
-          <section id="css"></section>
-          <section id="js"></section>
+          <section id="html">
+            <img src="/assets/html.webp" alt="HTML" loading="lazy">
+          </section>
+          <section id="css">
+            <img src="/assets/css.webp" alt="CSS" loading="lazy">
+          </section>
+          <section id="js">
+            <img src="/assets/js.webp" alt="JS" loading="lazy">
+          </section>
 
           <div class="result-container">
             <iframe id="output" srcdoc=""></iframe>

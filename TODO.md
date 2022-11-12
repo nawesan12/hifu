@@ -1,17 +1,19 @@
 1. Fix loading screen [✔]
 
-2. Fix html and js workers []
+2. Fix html and js workers [✔]
 
-3. Separate listeners from main to a separate file []
+3. Add a way to change the theme [✔]
 
-4. Add a way to change the theme []
+4. Add a way to change the font size [?]
 
-6. Add a way to change the font size []
+5. Add dropdown menu from dicebear image for authentication []
 
-7. Add dropdown menu from dicebear image for authentication []
+6. Add sharing system for Coda []
 
-8. Add sharing system for both cases []
+7. Add copyright [✔]
 
-9. Add copyright [✔]
+8. Add feature for saving in local storage [✔]
 
-10. Add feature for saving in local storage []
+9. Add feature for saving in cloud storage []
+
+10. Add corner images for each editor []
