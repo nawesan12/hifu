@@ -3,6 +3,7 @@
 import JSZip from 'jszip'
 import { cssEditor, jsEditor } from "./main"
 import { generateOutput } from './utils'
+import "./external/filesaver"
 
 export const downloadResultZippedFiles = () => {
   const zip = new JSZip()
