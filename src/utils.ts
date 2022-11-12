@@ -14,8 +14,52 @@ export const generateRandomLogoForMenu = (e: HTMLImageElement) => {
   e.style.border = `4px solid #${randomToSixLengthHex()}`
 }
 
+const outputHead = () => {
+  const library = $selectCSSLibrary.value
+
+  const selectedLibrary = () => {
+    if(!library) {
+      return ''
+    }
+    if(library === 'bootstrap') {
+      return `
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+      `
+    }
+    if(library === 'bulma') {
+      return `<link rel="stylesheet" href="/bulma/css/bulma.min.css" crossorigin="anonymous">`
+    }
+    if(library === 'materialize') {
+      return `
+        <link rel="stylesheet" href="/materialize/css/materialize.min.css" crossorigin="anonymous">
+        <script src="/materialize/js/materialize.min.js" crossorigin="anonymous"></script>
+      `
+    }
+    return
+  }
+  
+  return `
+    <head>
+      <meta charset="utf-8" />
+      <title>Your Hifu result!</title>
+      <link rel="icon" type="image/webp" href="/thunder.webp" />
+      ${selectedLibrary()}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>${cssEditor.getValue()}</style>
+    </head>
+  `
+}
+
 export const generateOutput = () => {
-  return `<!DOCTYPE html><html><head><title>Your Hifu result!</title><link rel="icon" type="image/webp" href="/thunder.webp" /><link rel="stylesheet" type="text/css" href="${$selectCSSLibrary.value ? localStorage.getItem('css-library') : " "}"><script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script><style>${cssEditor.getValue()}</style></head><body>${htmlEditor.getValue()}<script>${jsEditor.getValue()}</script></body></html>`
+  return `
+  <!DOCTYPE html>
+  <html>
+    ${outputHead()}
+    <body>
+      ${htmlEditor.getValue()}
+      <script>${jsEditor.getValue()}</script>
+    </body></html>`
 }
 
 export const updateOutput = () => {
@@ -36,21 +80,6 @@ export const newWindow = () => {
   newWindow?.document.write(generateOutput())
   newWindow?.document.close()
   alertMessage('Project opened in a new tab!', 'success', 2500)
-}
-
-export const generateShareUrl = () => {
-  const url = new URL(window.location.href)
-  url.searchParams.set('html', htmlEditor.getValue())
-  url.searchParams.set('css', cssEditor.getValue())
-  url.searchParams.set('js', jsEditor.getValue())
-  return url.toString()
-}
-
-export const shareToTwitter = () => {
-  const url = generateShareUrl()
-  const text = 'Check out this cool Hifu result!'
-  const twitterUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`
-  window.open(twitterUrl, '_blank')
 }
 
 export const saveInLocalStorage = () => {
@@ -88,4 +117,32 @@ export const readConfigFromLocalStorage = () => {
     const $selectTheme = document.querySelector<HTMLSelectElement>('#theme')
     $selectTheme!.value = theme
   }
+}
+
+export const downloadResultFiles = () => {
+  const html = new Blob([htmlEditor.getValue()], { type: 'text/html' })
+  const css = new Blob([cssEditor.getValue()], { type: 'text/css' })
+  const js = new Blob([jsEditor.getValue()], { type: 'text/javascript' })
+
+  const htmlURL = URL.createObjectURL(html)
+  const cssURL = URL.createObjectURL(css)
+  const jsURL = URL.createObjectURL(js)
+
+  const htmlLink = document.createElement('a')
+  const cssLink = document.createElement('a')
+  const jsLink = document.createElement('a')
+
+  htmlLink.href = htmlURL
+  cssLink.href = cssURL
+  jsLink.href = jsURL
+
+  htmlLink.download = 'index.html'
+  cssLink.download = 'style.css'
+  jsLink.download = 'script.js'
+
+  htmlLink.click()
+  cssLink.click()
+  jsLink.click()
+
+  alertMessage('Project downloaded!', 'success', 2500)
 }

@@ -9,6 +9,19 @@ export const openSettings = () => {
 
 export const changeTheme = (theme: string) => {
   monaco.editor.setTheme(theme)
+  saveConfigInLocalStorage()
+}
+
+export const toggleTheme = () => {
+  if($selectTheme.value === 'vs-dark') {
+    changeTheme("vs-light")
+    return
+  }
+  if ($selectTheme.value === 'vs-light') {
+    changeTheme("vs-dark")
+    return
+  }
+  return
 }
 
 export const saveConfigInLocalStorage = () => {

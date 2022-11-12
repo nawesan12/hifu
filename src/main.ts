@@ -2,13 +2,14 @@ import './style/main.css'
 import setLoadingScreen from './loading'
 import { generateRandomLogoForMenu, newWindow, updateOutput, copyToClipboard, resultToFullScreen, loadFromLocalStorage, saveInLocalStorage } from './utils'
 import { alertMessage } from './alerts'
-import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton, $saveButton, $settingsButton, $selectTheme, $selectCSSLibrary } from './elements'
+import { $html, $css, $js, $logoimg, $copyButton, $fullscreenBtn, $newTabButton, $shareButton, $saveButton, $settingsButton, $selectTheme, $selectCSSLibrary, $downloadButton } from './elements'
 
 import * as monaco from 'monaco-editor'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-import { changeTheme, loadConfigFromLocalStorage, openSettings, saveConfigInLocalStorage } from './settings'
+import { changeTheme, loadConfigFromLocalStorage, openSettings, saveConfigInLocalStorage, toggleTheme } from './settings'
+import { downloadResultZippedFiles } from './download'
 
 window.MonacoEnvironment?({
   getWorkerUrl: (_: any, label: string) => {
@@ -57,6 +58,8 @@ $shareButton.addEventListener("click", () => alertMessage('We are working on thi
 
 $saveButton.addEventListener("click", saveInLocalStorage)
 
+$downloadButton.addEventListener("click", downloadResultZippedFiles)
+
 $settingsButton.addEventListener("click", openSettings)
 
 $selectTheme.addEventListener("change", (e: any) => changeTheme(e.target.value ? e.target.value : 'vs-dark'))
@@ -67,6 +70,25 @@ $selectCSSLibrary.addEventListener("change", () => {
 })
 
 $fullscreenBtn.addEventListener("click", resultToFullScreen)
+
+document.addEventListener("keydown", (e) => {
+  if(!e.ctrlKey) {
+    return
+  }
+
+  if(e.key === 's') {
+    e.stopPropagation()
+    e.preventDefault()
+    saveInLocalStorage()
+    return
+  }
+  if(e.key === 'l') {
+    e.stopPropagation()
+    e.preventDefault()
+    toggleTheme()
+    return
+  }
+})
 
 window.onunload = () => saveInLocalStorage()
 
