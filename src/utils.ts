@@ -1,4 +1,4 @@
-import { initialValues } from './constants';
+import { initialValues } from './constants'
 import { htmlEditor, cssEditor, jsEditor } from "./main"
 import { $output, $selectCSSLibrary } from "./elements"
 import { alertMessage } from "./alerts"
@@ -11,7 +11,7 @@ export const generateRandomLogoForMenu = (e: HTMLImageElement) => {
     return Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
   }
 
-  e.style.border = `4px solid #${randomToSixLengthHex()}`
+  e.style.border = `2px solid #${randomToSixLengthHex()}`
 }
 
 const outputHead = () => {

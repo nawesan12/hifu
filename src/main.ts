@@ -27,21 +27,21 @@ export const htmlEditor = editor.create($html, {
   value: "",
   language: 'html',
   theme: 'vs-dark',
-  fontSize: 20
+  fontSize: 16
 })
 
 export const cssEditor = editor.create($css, {
   value: "",
   language: 'css',
   theme: 'vs-dark',
-  fontSize: 20
+  fontSize: 16
 })
 
 export const jsEditor = editor.create($js, {
   value: "",
   language: 'javascript',
   theme: 'vs-dark',
-  fontSize: 20
+  fontSize: 16
 })
 
 
@@ -78,7 +78,6 @@ document.addEventListener("keydown", (e) => {
   if(!e.ctrlKey) {
     return
   }
-
   if(e.key === 's') {
     e.stopPropagation()
     e.preventDefault()
