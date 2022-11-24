@@ -122,3 +122,17 @@ export const readConfigFromLocalStorage = () => {
     $selectTheme!.value = theme
   }
 }
+
+export const shareToCoda = () => {
+  const dataToSend = {
+    html: htmlEditor.getValue(),
+    css: cssEditor.getValue(),
+    js: cssEditor.getValue(),
+    authorId: "" 
+  }
+
+  fetch("https://coda.vercel.app/api/code/upload", {
+    method: "POST",
+    body: JSON.stringify(dataToSend)    
+  })
+}
